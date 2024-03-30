@@ -9,6 +9,7 @@ export default {
 			href: 'https://ya.ru',
 			num1: 10,
 			num2: 6,
+			arr: [1, 2, 3],
 		}
 	}
 }
@@ -30,6 +31,8 @@ export default {
 	</div>
 	{{ num1 ** 2 }}
 	{{ num1 + num2 }}
+	<p>Вывод каждого числа: {{ arr[0] }},{{ arr[1] }}, {{ arr[2] }}</p>
+	<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 </template>
 
 <style>
