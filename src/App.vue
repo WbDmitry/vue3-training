@@ -5,6 +5,8 @@ export default {
 		return {
 			firstName: 'Dmitry',
 			lastName: 'Wb',
+			linkText: 'Yandex поиск',
+			href: 'https://ya.ru'
 		}
 	}
 }
@@ -17,6 +19,12 @@ export default {
 	</div>
 	<div>
 		{{ firstName }}
+	</div>
+	<div>
+		<a v-bind:href="href" target="_blank">{{ linkText }}</a>
+	</div>
+	<div>
+		<a :href="href" target="_blank">{{ linkText }}</a>
 	</div>
 </template>
 
