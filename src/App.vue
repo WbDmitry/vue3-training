@@ -6,7 +6,9 @@ export default {
 			firstName: 'Dmitry',
 			lastName: 'Wb',
 			linkText: 'Yandex поиск',
-			href: 'https://ya.ru'
+			href: 'https://ya.ru',
+			num1: 10,
+			num2: 6,
 		}
 	}
 }
@@ -26,6 +28,8 @@ export default {
 	<div>
 		<a :href="href" target="_blank">{{ linkText }}</a>
 	</div>
+	{{ num1 ** 2 }}
+	{{ num1 + num2 }}
 </template>
 
 <style>
