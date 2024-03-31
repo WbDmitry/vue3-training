@@ -15,6 +15,7 @@ export default {
 			cost: 2000,
 			amount: 1,
 			visible: true,
+			isAdmin: false,
 		}
 	},
 
@@ -74,6 +75,10 @@ export default {
 		setVisible: function () {
 			this.visible = !this.visible
 		},
+
+		setAdmin: function () {
+			this.isAdmin = !this.isAdmin
+		},
 	}
 }
 </script>
@@ -112,6 +117,10 @@ export default {
 	<p v-if="visible">Visible: true</p>
 	<p v-if="!visible">Visible: false</p>
 	<button @click="setVisible()">Visible: {{ visible }}</button>
+
+	<p v-if="isAdmin">isAdmin: true</p>
+	<p v-else>isAdmin: false</p>
+	<button @click="setAdmin()">isAdmin</button>
 </template>
 
 <style>
