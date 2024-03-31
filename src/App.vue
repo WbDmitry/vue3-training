@@ -163,6 +163,12 @@ export default {
 		<button @click="setAge(25)">25</button>
 		<button @click="setAge(30)">30</button>
 	</div>
+
+	<div v-for="items in arr">{{ items }}</div>
+	<div v-for="items in arr">{{ items ** 2 }}</div>
+	<ul>
+		<li v-for="items in arr">{{ items }}</li>
+	</ul>
 </template>
 
 <style>
