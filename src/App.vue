@@ -20,6 +20,31 @@ export default {
 		},
 		getUserInfo: function () {
 			alert(`User: ${this.lastName}.${this.firstName}`)
+		},
+
+		getDayAlerts: function (params) {
+			let numDay = this.getDayOfTheWeek(
+				Number(
+					prompt("Введите число от 1 до 7")
+				)
+			);
+			alert(numDay)
+		},
+
+		getDayOfTheWeek: function (day) {
+			// let days = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+			// return days[day - 1]
+
+			switch (day) {
+				case 1: return "Понедельник"
+				case 2: return "Вторник"
+				case 3: return "Среда"
+				case 4: return "Четверг"
+				case 5: return "Пятница"
+				case 6: return "Суббота"
+				case 7: return "Воскресенье"
+				default: return "Вы ввели неправильное число"
+			}
 		}
 	}
 }
@@ -37,10 +62,11 @@ export default {
 	<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 	<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 	<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
-	{{ getCurrentDate() }}
+	<!-- {{ getCurrentDate() }} -->
 	<button @click="getCurrentDate">Вывести дату по клику</button>
 	<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 	<button @click="getUserInfo">Вывести свойсва из data</button>
+	<button @click="getDayAlerts">Узнать день недели</button>
 </template>
 
 <style>
