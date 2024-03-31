@@ -18,11 +18,12 @@ export default {
 			let currentDate = new Date();
 			alert(currentDate)
 		},
+
 		getUserInfo: function () {
 			alert(`User: ${this.lastName}.${this.firstName}`)
 		},
 
-		getDayAlerts: function (params) {
+		getDayAlerts: function () {
 			let numDay = this.getDayOfTheWeek(
 				Number(
 					prompt("Введите число от 1 до 7")
@@ -45,6 +46,10 @@ export default {
 				case 7: return "Воскресенье"
 				default: return "Вы ввели неправильное число"
 			}
+		},
+
+		outputTheSquareOfNumber: function (num) {
+			return alert(num ** 2);
 		}
 	}
 }
@@ -67,6 +72,8 @@ export default {
 	<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 	<button @click="getUserInfo">Вывести свойсва из data</button>
 	<button @click="getDayAlerts">Узнать день недели</button>
+	<button @click="outputTheSquareOfNumber(2)">Вывести квадрат числа 2</button>
+	<button @click="outputTheSquareOfNumber(3)">Вывести квадрат числа 3</button>
 </template>
 
 <style>
