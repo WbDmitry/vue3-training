@@ -10,6 +10,7 @@ export default {
 			num1: 10,
 			num2: 6,
 			arr: [1, 2, 3],
+			arr2: ['x', 'y', 'z'],
 			obj: { x: 1, y: 2, z: 3 },
 			textParagraph: 'Что такое Lorem Ipsum?',
 			cost: 2000,
@@ -168,6 +169,9 @@ export default {
 	<div v-for="items in arr">{{ items ** 2 }}</div>
 	<ul>
 		<li v-for="items in arr">{{ items }}</li>
+	</ul>
+	<ul>
+		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
 	</ul>
 </template>
 
