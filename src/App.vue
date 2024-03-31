@@ -14,6 +14,7 @@ export default {
 			textParagraph: 'Что такое Lorem Ipsum?',
 			cost: 2000,
 			amount: 1,
+			visible: true,
 		}
 	},
 
@@ -68,7 +69,11 @@ export default {
 
 		setCost: function (params) {
 			this.cost = params
-		}
+		},
+
+		setVisible: function () {
+			this.visible = !this.visible
+		},
 	}
 }
 </script>
@@ -103,6 +108,10 @@ export default {
 	<button @click="setCost(2000)">Изменить Cost на 2000</button>
 	<button @click.once="amount++">Amount++(once)</button>
 	<a @click.prevent :href="href" target="_blank">{{ linkText }}</a>
+
+	<p v-if="visible">Visible: true</p>
+	<p v-if="!visible">Visible: false</p>
+	<button @click="setVisible()">Visible: {{ visible }}</button>
 </template>
 
 <style>
