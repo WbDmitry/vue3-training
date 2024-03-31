@@ -17,6 +17,9 @@ export default {
 		getCurrentDate: function () {
 			let currentDate = new Date();
 			alert(currentDate)
+		},
+		getUserInfo: function () {
+			alert(`User: ${this.lastName}.${this.firstName}`)
 		}
 	}
 }
@@ -37,6 +40,7 @@ export default {
 	{{ getCurrentDate() }}
 	<button @click="getCurrentDate">Вывести дату по клику</button>
 	<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
+	<button @click="getUserInfo">Вывести свойсва из data</button>
 </template>
 
 <style>
