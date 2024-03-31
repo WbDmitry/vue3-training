@@ -21,7 +21,31 @@ export default {
 			age: 25,
 			visibleGroup: false,
 			items: [1, 2, 3],
-			obj2: { user1: '100$', user2: '200$', user3: '300$', }
+			obj2: {
+				user1: '100$', user2: '200$', user3: '300$',
+			},
+			hrefs: [
+				{ href: '1.html', text: 'text1' },
+				{ href: '2.html', text: 'text2' },
+				{ href: '3.html', text: 'text3' },
+			],
+			products: [
+				{
+					name: 'product1',
+					price: 100,
+					quantity: 5
+				},
+				{
+					name: 'product2',
+					price: 200,
+					quantity: 4
+				},
+				{
+					name: 'product3',
+					price: 300,
+					quantity: 3
+				},
+			]
 		}
 	},
 
@@ -176,11 +200,11 @@ export default {
 	<ul>
 		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
 	</ul>
-  
+
 	<ul>
 		<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
 	</ul>
-  
+
 	<div v-for="items in items">
 		<p>{{ items }}</p>
 		<p class="divider"></p>
@@ -191,8 +215,21 @@ export default {
 			<li>{{ items }}</li>
 			<li class="divider"></li>
 		</template>
-</ul>
+	</ul>
 
+	<ul>
+		<li v-for="item in hrefs">
+			<a :href="item.href">{{ item.text }}</a>
+		</li>
+	</ul>
+
+	<table>
+		<tr v-for="items in products">
+			<td>{{ items.name }}</td>
+			<td>{{ items.price }}</td>
+			<td>{{ items.quantity }}</td>
+		</tr>
+	</table>
 </template>
 
 <style>
