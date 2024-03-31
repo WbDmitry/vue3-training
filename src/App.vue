@@ -20,6 +20,7 @@ export default {
 			day: 1,
 			age: 25,
 			visibleGroup: false,
+			items: [1, 2, 3],
 		}
 	},
 
@@ -172,6 +173,18 @@ export default {
 	</ul>
 	<ul>
 		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
+	</ul>
+
+	<div v-for="items in items">
+		<p>{{ items }}</p>
+		<p class="divider"></p>
+	</div>
+
+	<ul>
+		<template v-for="items in items">
+			<li>{{ items }}</li>
+			<li class="divider"></li>
+		</template>
 	</ul>
 </template>
 
