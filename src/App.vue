@@ -21,6 +21,7 @@ export default {
 			age: 25,
 			visibleGroup: false,
 			items: [1, 2, 3],
+			obj2: { user1: '100$', user2: '200$', user3: '300$', }
 		}
 	},
 
@@ -171,10 +172,15 @@ export default {
 	<ul>
 		<li v-for="items in arr">{{ items }}</li>
 	</ul>
+
 	<ul>
 		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
 	</ul>
-
+  
+	<ul>
+		<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
+	</ul>
+  
 	<div v-for="items in items">
 		<p>{{ items }}</p>
 		<p class="divider"></p>
@@ -185,7 +191,8 @@ export default {
 			<li>{{ items }}</li>
 			<li class="divider"></li>
 		</template>
-	</ul>
+</ul>
+
 </template>
 
 <style>
