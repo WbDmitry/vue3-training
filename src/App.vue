@@ -28,6 +28,23 @@ export default {
 				{ href: '1.html', text: 'text1' },
 				{ href: '2.html', text: 'text2' },
 				{ href: '3.html', text: 'text3' },
+			],
+			products: [
+				{
+					name: 'product1',
+					price: 100,
+					quantity: 5
+				},
+				{
+					name: 'product2',
+					price: 200,
+					quantity: 4
+				},
+				{
+					name: 'product3',
+					price: 300,
+					quantity: 3
+				},
 			]
 		}
 	},
@@ -206,6 +223,13 @@ export default {
 		</li>
 	</ul>
 
+	<table>
+		<tr v-for="items in products">
+			<td>{{ items.name }}</td>
+			<td>{{ items.price }}</td>
+			<td>{{ items.quantity }}</td>
+		</tr>
+	</table>
 </template>
 
 <style>
