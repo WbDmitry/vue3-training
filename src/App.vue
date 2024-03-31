@@ -17,6 +17,7 @@ export default {
 			visible: true,
 			isAdmin: false,
 			day: 1,
+			age: 25,
 		}
 	},
 
@@ -84,6 +85,10 @@ export default {
 		setDays: function (params) {
 			this.day = params
 		},
+
+		setAge: function (params) {
+			this.age = params
+		},
 	}
 }
 </script>
@@ -141,6 +146,14 @@ export default {
 	<button @click="setDays(5)">5</button>
 	<button @click="setDays(6)">6</button>
 	<button @click="setDays(7)">7</button>
+
+	<p v-if="age <= 18">подросток</p>
+	<p v-else-if="age >= 19 && age <= 25">молодой человек</p>
+	<p v-if="age > 26">мужчина</p>
+	<button @click="setAge(16)">16</button>
+	<button @click="setAge(21)">21</button>
+	<button @click="setAge(25)">25</button>
+	<button @click="setAge(30)">30</button>
 </template>
 
 <style>
