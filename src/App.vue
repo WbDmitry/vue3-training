@@ -11,9 +11,18 @@ export default {
 			num2: 6,
 			arr: [1, 2, 3],
 			obj: { x: 1, y: 2, z: 3 },
-			textParagraph: 'Что такое Lorem Ipsum?'
+			textParagraph: 'Что такое Lorem Ipsum?',
+			cost: 2000,
+			amount: 1,
 		}
 	},
+
+	computed: {
+		price: function () {
+			return this.cost * this.amount
+		}
+	},
+
 	methods: {
 		getCurrentDate: function () {
 			let currentDate = new Date();
@@ -82,6 +91,12 @@ export default {
 	<p>{{ textParagraph }}</p>
 	<button @click="switchTextP('Один текст')">Изменить текст на «Один текст»</button>
 	<button @click="switchTextP('Второй текст')">Изменить текст на «Второй текст»</button>
+
+	<p>Cost: {{ cost }}</p>
+	<p>Amount: {{ amount }}</p>
+	<p>Price: {{ price }}</p>
+	<button>Изменить Cost на 3250</button>
+
 </template>
 
 <style>
