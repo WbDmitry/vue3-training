@@ -11,6 +11,7 @@ export default {
 			num2: 6,
 			arr: [1, 2, 3],
 			obj: { x: 1, y: 2, z: 3 },
+			textParagraph: 'Что такое Lorem Ipsum?'
 		}
 	},
 	methods: {
@@ -50,6 +51,10 @@ export default {
 
 		outputTheSquareOfNumber: function (num) {
 			return alert(num ** 2);
+		},
+
+		switchTextP: function (newText) {
+			this.textParagraph = newText
 		}
 	}
 }
@@ -74,6 +79,9 @@ export default {
 	<button @click="getDayAlerts">Узнать день недели</button>
 	<button @click="outputTheSquareOfNumber(2)">Вывести квадрат числа 2</button>
 	<button @click="outputTheSquareOfNumber(3)">Вывести квадрат числа 3</button>
+	<p>{{ textParagraph }}</p>
+	<button @click="switchTextP('Один текст')">Изменить текст на «Один текст»</button>
+	<button @click="switchTextP('Второй текст')">Изменить текст на «Второй текст»</button>
 </template>
 
 <style>
