@@ -230,6 +230,8 @@ export default {
 			<td>{{ items.quantity }}</td>
 		</tr>
 	</table>
+
+	<p v-for="num in 30">{{ num }}</p>
 </template>
 
 <style>
