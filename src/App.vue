@@ -35,6 +35,7 @@ export default {
 	<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 	<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
 	{{ getCurrentDate() }}
+	<button @click="getCurrentDate">Вывести дату</button>
 </template>
 
 <style>
