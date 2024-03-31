@@ -10,6 +10,7 @@ export default {
 			num1: 10,
 			num2: 6,
 			arr: [1, 2, 3],
+			arr2: ['x', 'y', 'z'],
 			obj: { x: 1, y: 2, z: 3 },
 			textParagraph: 'Что такое Lorem Ipsum?',
 			cost: 2000,
@@ -19,6 +20,7 @@ export default {
 			day: 1,
 			age: 25,
 			visibleGroup: false,
+			obj2: { user1: '100$', user2: '200$', user3: '300$', }
 		}
 	},
 
@@ -163,6 +165,20 @@ export default {
 		<button @click="setAge(25)">25</button>
 		<button @click="setAge(30)">30</button>
 	</div>
+
+	<div v-for="items in arr">{{ items }}</div>
+	<div v-for="items in arr">{{ items ** 2 }}</div>
+	<ul>
+		<li v-for="items in arr">{{ items }}</li>
+	</ul>
+
+	<ul>
+		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
+	</ul>
+
+	<ul>
+		<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
+	</ul>
 </template>
 
 <style>
