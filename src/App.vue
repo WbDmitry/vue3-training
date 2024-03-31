@@ -64,6 +64,10 @@ export default {
 
 		switchTextP: function (newText) {
 			this.textParagraph = newText
+		},
+
+		setCost: function (params) {
+			this.cost = params
 		}
 	}
 }
@@ -95,7 +99,8 @@ export default {
 	<p>Cost: {{ cost }}</p>
 	<p>Amount: {{ amount }}</p>
 	<p>Price: {{ price }}</p>
-	<button>Изменить Cost на 3250</button>
+	<button @click="setCost(3250)">Изменить Cost на 3250</button>
+	<button @click="setCost(2000)">Изменить Cost на 2000</button>
 
 </template>
 
