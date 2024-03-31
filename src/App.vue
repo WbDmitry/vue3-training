@@ -101,7 +101,8 @@ export default {
 	<p>Price: {{ price }}</p>
 	<button @click="setCost(3250)">Изменить Cost на 3250</button>
 	<button @click="setCost(2000)">Изменить Cost на 2000</button>
-
+	<button @click.once="amount++">Amount++(once)</button>
+	<a @click.prevent :href="href" target="_blank">{{ linkText }}</a>
 </template>
 
 <style>
