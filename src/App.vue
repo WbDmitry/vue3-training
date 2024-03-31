@@ -16,6 +16,7 @@ export default {
 			amount: 1,
 			visible: true,
 			isAdmin: false,
+			day: 1,
 		}
 	},
 
@@ -79,6 +80,10 @@ export default {
 		setAdmin: function () {
 			this.isAdmin = !this.isAdmin
 		},
+
+		setDays: function (params) {
+			this.day = params
+		},
 	}
 }
 </script>
@@ -121,6 +126,21 @@ export default {
 	<p v-if="isAdmin">isAdmin: true</p>
 	<p v-else>isAdmin: false</p>
 	<button @click="setAdmin()">isAdmin</button>
+
+	<p v-if="day === 1">1 = Понедельник</p>
+	<p v-if="day === 2">2 = Вторник</p>
+	<p v-if="day === 3">3 = Среда</p>
+	<p v-if="day === 4">4 = Четверг</p>
+	<p v-if="day === 5">5 = Пятница</p>
+	<p v-if="day === 6">6 = Суббота</p>
+	<p v-if="day === 7">7 = Воскресенье</p>
+	<button @click="setDays(1)">1</button>
+	<button @click="setDays(2)">2</button>
+	<button @click="setDays(3)">3</button>
+	<button @click="setDays(4)">4</button>
+	<button @click="setDays(5)">5</button>
+	<button @click="setDays(6)">6</button>
+	<button @click="setDays(7)">7</button>
 </template>
 
 <style>
