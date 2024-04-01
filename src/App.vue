@@ -11,7 +11,7 @@ export default {
 			num2: 6,
 			arr: [1, 2, 3],
 			arr2: ['x', 'y', 'z'],
-			arr3: ['a', 'b', 'c'],
+			arr3: ['a', 'c', 'b',],
 			obj: { x: 1, y: 2, z: 3 },
 			textParagraph: 'Что такое Lorem Ipsum?',
 			cost: 2000,
@@ -140,6 +140,10 @@ export default {
 		deletePenultimate: function () {
 			this.arr3.splice(-2, 1);
 		},
+
+		sortArr: function () {
+			this.arr3.sort();
+		},
 	}
 }
 </script>
@@ -259,6 +263,7 @@ export default {
 	<button @click="deleteFirst">Удалить первый пункт</button>
 	<button @click="deleteLast">Удалить последний пункт</button>
 	<button @click="deletePenultimate">Удалить предпоследний пункт</button>
+	<button @click="sortArr">Сортировать</button>
 
 	<ul>
 		<li v-for="elem in arr3">
