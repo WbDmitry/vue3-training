@@ -136,6 +136,10 @@ export default {
 		deleteLast: function () {
 			this.arr3.pop();
 		},
+
+		deletePenultimate: function () {
+			this.arr3.splice(-2, 1);
+		},
 	}
 }
 </script>
@@ -254,6 +258,8 @@ export default {
 	<button @click="addArr">Добавить</button>
 	<button @click="deleteFirst">Удалить первый пункт</button>
 	<button @click="deleteLast">Удалить последний пункт</button>
+	<button @click="deletePenultimate">Удалить предпоследний пункт</button>
+
 	<ul>
 		<li v-for="elem in arr3">
 			{{ elem }}
