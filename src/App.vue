@@ -129,9 +129,13 @@ export default {
 			this.arr3.push('d');
 		},
 
-		deleteArr: function () {
+		deleteFirst: function () {
 			this.arr3.shift();
-		}
+		},
+
+		deleteLast: function () {
+			this.arr3.pop();
+		},
 	}
 }
 </script>
@@ -248,7 +252,8 @@ export default {
 	<p v-if="items > 0"> {{ items }}</p>
 </div> -->
 	<button @click="addArr">Добавить</button>
-	<button @click="deleteArr">Удалить первый пункт</button>
+	<button @click="deleteFirst">Удалить первый пункт</button>
+	<button @click="deleteLast">Удалить последний пункт</button>
 	<ul>
 		<li v-for="elem in arr3">
 			{{ elem }}
