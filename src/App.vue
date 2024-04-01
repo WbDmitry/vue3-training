@@ -180,7 +180,7 @@ export default {
 		<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 		<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 		<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
-		{{ getCurrentDate() }}
+		<!-- {{ getCurrentDate() }} -->
 		<button @click="getCurrentDate">Вывести дату по клику</button>
 		<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 		<button @click="getUserInfo">Вывести свойсва из data</button>
