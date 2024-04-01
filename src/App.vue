@@ -11,6 +11,7 @@ export default {
 			num2: 6,
 			arr: [1, 2, 3],
 			arr2: ['x', 'y', 'z'],
+			arr3: ['a', 'c', 'b',],
 			obj: { x: 1, y: 2, z: 3 },
 			textParagraph: 'Что такое Lorem Ipsum?',
 			cost: 2000,
@@ -136,6 +137,30 @@ export default {
 		setVisibleGroup: function () {
 			this.visibleGroup = !this.visibleGroup
 		},
+
+		addArr: function () {
+			this.arr3.push('d');
+		},
+
+		deleteFirst: function () {
+			this.arr3.shift();
+		},
+
+		deleteLast: function () {
+			this.arr3.pop();
+		},
+
+		deletePenultimate: function () {
+			this.arr3.splice(-2, 1);
+		},
+
+		sortArr: function () {
+			this.arr3.sort();
+		},
+
+		reverseArr: function () {
+			this.arr3.reverse();
+		},
 	}
 }
 </script>
@@ -155,7 +180,7 @@ export default {
 		<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 		<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 		<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
-		<!-- {{ getCurrentDate() }} -->
+		 {{ getCurrentDate() }} 
 		<button @click="getCurrentDate">Вывести дату по клику</button>
 		<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 		<button @click="getUserInfo">Вывести свойсва из data</button>
@@ -230,23 +255,36 @@ export default {
 			<li>{{ items }}</li>
 			<li class="divider"></li>
 		</template>
-	</ul>
+</ul>
 
+<ul>
+	<li v-for="item in hrefs">
+		<a :href="item.href">{{ item.text }}</a>
+	</li>
+</ul>
+
+<table>
+	<tr v-for="items in products">
+		<td>{{ items.name }}</td>
+		<td>{{ items.price }}</td>
+		<td>{{ items.quantity }}</td>
+	</tr>
+</table>
+
+<p v-for="num in 30">{{ num }}</p>
+
+<div v-for="items in items2">
+	<p v-if="items > 0"> {{ items }}</p>
+</div>
+	<button @click="addArr">Добавить</button>
+	<button @click="deleteFirst">Удалить первый пункт</button>
+	<button @click="deleteLast">Удалить последний пункт</button>
+	<button @click="deletePenultimate">Удалить предпоследний пункт</button>
+	<button @click="sortArr">Сортировать</button>
+	<button @click="reverseArr">В обратном порядке</button>
 	<ul>
-		<li v-for="item in hrefs">
-			<a :href="item.href">{{ item.text }}</a>
-		</li>
-	</ul>
-
-	<table>
-		<tr v-for="items in products">
-			<td>{{ items.name }}</td>
-			<td>{{ items.price }}</td>
-			<td>{{ items.quantity }}</td>
-		</tr>
-	</table>
-
-	<p v-for="num in 30">{{ num }}</p>
+		<li v-for="elem in arr3">
+			{{ elem }}
 
 	<div v-for="items in items2">
 		<p v-if="items > 0"> {{ items }}</p>
