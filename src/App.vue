@@ -180,7 +180,7 @@ export default {
 		<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 		<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 		<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
-		 {{ getCurrentDate() }} 
+		{{ getCurrentDate() }}
 		<button @click="getCurrentDate">Вывести дату по клику</button>
 		<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 		<button @click="getUserInfo">Вывести свойсва из data</button>
@@ -229,73 +229,76 @@ export default {
 		<button @click="setAge(21)">21</button>
 		<button @click="setAge(25)">25</button>
 		<button @click="setAge(30)">30</button>
+
+		<div v-for="items in arr">{{ items }}</div>
+		<div v-for="items in arr">{{ items ** 2 }}</div>
+		<ul>
+			<li v-for="items in arr">{{ items }}</li>
+		</ul>
+
+		<ul>
+			<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
+		</ul>
+
+		<ul>
+			<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
+		</ul>
+
+		<div v-for="items in items">
+			<p>{{ items }}</p>
+			<p class="divider"></p>
+		</div>
+
+		<ul>
+			<template v-for="items in items">
+				<li>{{ items }}</li>
+				<li class="divider"></li>
+			</template>
+		</ul>
+
+		<ul>
+			<li v-for="item in hrefs">
+				<a :href="item.href">{{ item.text }}</a>
+			</li>
+		</ul>
+
+		<table>
+			<tr v-for="items in products">
+				<td>{{ items.name }}</td>
+				<td>{{ items.price }}</td>
+				<td>{{ items.quantity }}</td>
+			</tr>
+		</table>
+
+		<p v-for="num in 30">{{ num }}</p>
+
+		<div v-for="items in items2">
+			<p v-if="items > 0"> {{ items }}</p>
+		</div>
+		<button @click="addArr">Добавить</button>
+		<button @click="deleteFirst">Удалить первый пункт</button>
+		<button @click="deleteLast">Удалить последний пункт</button>
+		<button @click="deletePenultimate">Удалить предпоследний пункт</button>
+		<button @click="sortArr">Сортировать</button>
+		<button @click="reverseArr">В обратном порядке</button>
+		<ul>
+			<li v-for="elem in arr3">
+				{{ elem }}
+			</li>
+		</ul>
+
+		<div v-for="items in items2">
+			<p v-if="items > 0"> {{ items }}</p>
+		</div>
+
+		<ul>
+			<li v-for="items in products2" :key="items.id">
+				{{ items.id }}
+				{{ items.name }}
+			</li>
+		</ul>
 	</div>
 
-	<div v-for="items in arr">{{ items }}</div>
-	<div v-for="items in arr">{{ items ** 2 }}</div>
-	<ul>
-		<li v-for="items in arr">{{ items }}</li>
-	</ul>
-
-	<ul>
-		<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
-	</ul>
-
-	<ul>
-		<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
-	</ul>
-
-	<div v-for="items in items">
-		<p>{{ items }}</p>
-		<p class="divider"></p>
-	</div>
-
-	<ul>
-		<template v-for="items in items">
-			<li>{{ items }}</li>
-			<li class="divider"></li>
-		</template>
-</ul>
-
-<ul>
-	<li v-for="item in hrefs">
-		<a :href="item.href">{{ item.text }}</a>
-	</li>
-</ul>
-
-<table>
-	<tr v-for="items in products">
-		<td>{{ items.name }}</td>
-		<td>{{ items.price }}</td>
-		<td>{{ items.quantity }}</td>
-	</tr>
-</table>
-
-<p v-for="num in 30">{{ num }}</p>
-
-<div v-for="items in items2">
-	<p v-if="items > 0"> {{ items }}</p>
-</div>
-	<button @click="addArr">Добавить</button>
-	<button @click="deleteFirst">Удалить первый пункт</button>
-	<button @click="deleteLast">Удалить последний пункт</button>
-	<button @click="deletePenultimate">Удалить предпоследний пункт</button>
-	<button @click="sortArr">Сортировать</button>
-	<button @click="reverseArr">В обратном порядке</button>
-	<ul>
-		<li v-for="elem in arr3">
-			{{ elem }}
-
-	<div v-for="items in items2">
-		<p v-if="items > 0"> {{ items }}</p>
-	</div>
-
-	<ul>
-		<li v-for="items in products2" :key="items.id">
-			{{ items.id }}
-			{{ items.name }}
-		</li>
-	</ul>
 </template>
 
 <style>
