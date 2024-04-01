@@ -74,6 +74,9 @@ export default {
 			numInput1: 2,
 			numInput2: 3,
 			res2: 0,
+			numInput3: 2,
+			numInput4: 3,
+			res3: 0,
 		}
 	},
 
@@ -184,6 +187,12 @@ export default {
 
 		calc2: function () {
 			this.res2 = this.numInput1 + this.numInput2
+		},
+
+		change: function () {
+			this.res3 = this.numInput3
+			this.numInput3 = this.numInput4
+			this.numInput4 = this.res3
 		}
 	}
 }
@@ -342,6 +351,10 @@ export default {
 	<input type="number" v-model="numInput2">
 	<button @click="calc2">Сложить</button>
 	<p> {{ res2 }}</p>
+
+	<input type="number" v-model="numInput3">
+	<input type="number" v-model="numInput4">
+	<button @click="change">Поменять местами</button>
 </template>
 
 <style>
