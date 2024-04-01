@@ -48,7 +48,20 @@ export default {
 					quantity: 3
 				},
 			],
-
+			products2: [
+				{
+					id: 1,
+					name: 'product1',
+				},
+				{
+					id: 2,
+					name: 'product2',
+				},
+				{
+					id: 3,
+					name: 'product3',
+				},
+			]
 		}
 	},
 
@@ -153,7 +166,7 @@ export default {
 </script>
 
 <template>
-	<!-- <p>VisibleGroup: {{ visibleGroup }}</p>
+	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
 		<p>Что такое Lorem Ipsum?</p>
@@ -262,7 +275,7 @@ export default {
 
 <div v-for="items in items2">
 	<p v-if="items > 0"> {{ items }}</p>
-</div> -->
+</div>
 	<button @click="addArr">Добавить</button>
 	<button @click="deleteFirst">Удалить первый пункт</button>
 	<button @click="deleteLast">Удалить последний пункт</button>
@@ -272,6 +285,15 @@ export default {
 	<ul>
 		<li v-for="elem in arr3">
 			{{ elem }}
+
+	<div v-for="items in items2">
+		<p v-if="items > 0"> {{ items }}</p>
+	</div>
+
+	<ul>
+		<li v-for="items in products2" :key="items.id">
+			{{ items.id }}
+			{{ items.name }}
 		</li>
 	</ul>
 </template>
