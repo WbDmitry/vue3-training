@@ -77,6 +77,8 @@ export default {
 			numInput3: 2,
 			numInput4: 3,
 			res3: 0,
+			fioArr: [],
+			textFIO: '',
 		}
 	},
 
@@ -193,6 +195,10 @@ export default {
 			this.res3 = this.numInput3
 			this.numInput3 = this.numInput4
 			this.numInput4 = this.res3
+		},
+
+		sendText: function () {
+			this.fioArr = this.textFIO.split(' ');
 		}
 	}
 }
@@ -355,6 +361,10 @@ export default {
 	<input type="number" v-model="numInput3">
 	<input type="number" v-model="numInput4">
 	<button @click="change">Поменять местами</button>
+
+	<input v-model="textFIO">
+	<button @click="sendText">Вывести</button>
+	<p v-for="element in fioArr">{{ element }}</p>
 </template>
 
 <style>
