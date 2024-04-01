@@ -308,6 +308,7 @@ export default {
 
 	<p :class="styles">Что такое Lorem Ipsum?</p>
 	<button @click="setColorText">Управление классом</button>
+	<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
 </template>
 
 <style>
