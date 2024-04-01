@@ -61,7 +61,10 @@ export default {
 					id: 3,
 					name: 'product3',
 				},
-			]
+			],
+			styles: {
+				colorText: false,
+			}
 		}
 	},
 
@@ -161,6 +164,10 @@ export default {
 		reverseArr: function () {
 			this.arr3.reverse();
 		},
+
+		setColorText: function () {
+			this.styles.colorText = !this.styles.colorText
+		}
 	}
 }
 </script>
@@ -299,10 +306,13 @@ export default {
 		</ul>
 	</div>
 
+	<p :class="styles">Что такое Lorem Ipsum?</p>
+	<button @click="setColorText">Управление классом</button>
 </template>
 
 <style>
-p {
+.colorText {
 	color: blueviolet;
+	text-decoration: line-through;
 }
 </style>
