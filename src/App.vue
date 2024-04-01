@@ -46,6 +46,20 @@ export default {
 					price: 300,
 					quantity: 3
 				},
+			],
+			products2: [
+				{
+					id: 1,
+					name: 'product1',
+				},
+				{
+					id: 2,
+					name: 'product2',
+				},
+				{
+					id: 3,
+					name: 'product3',
+				},
 			]
 		}
 	},
@@ -237,6 +251,13 @@ export default {
 	<div v-for="items in items2">
 		<p v-if="items > 0"> {{ items }}</p>
 	</div>
+
+	<ul>
+		<li v-for="items in products2" :key="items.id">
+			{{ items.id }}
+			{{ items.name }}
+		</li>
+	</ul>
 </template>
 
 <style>
