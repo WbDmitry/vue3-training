@@ -144,6 +144,10 @@ export default {
 		sortArr: function () {
 			this.arr3.sort();
 		},
+
+		reverseArr: function () {
+			this.arr3.reverse();
+		},
 	}
 }
 </script>
@@ -264,7 +268,7 @@ export default {
 	<button @click="deleteLast">Удалить последний пункт</button>
 	<button @click="deletePenultimate">Удалить предпоследний пункт</button>
 	<button @click="sortArr">Сортировать</button>
-
+	<button @click="reverseArr">В обратном порядке</button>
 	<ul>
 		<li v-for="elem in arr3">
 			{{ elem }}
