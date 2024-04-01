@@ -71,6 +71,9 @@ export default {
 			numberInput: 5,
 			num3: 2,
 			res: 0,
+			numInput1: 2,
+			numInput2: 3,
+			res2: 0,
 		}
 	},
 
@@ -177,6 +180,10 @@ export default {
 
 		calc: function () {
 			this.res = this.num3 ** 2
+		},
+
+		calc2: function () {
+			this.res2 = this.numInput1 + this.numInput2
 		}
 	}
 }
@@ -330,6 +337,11 @@ export default {
 	<input type="number" v-model="num3">
 	<button @click="calc">Расчитать</button>
 	<p> {{ res }}</p>
+
+	<input type="number" v-model="numInput1">
+	<input type="number" v-model="numInput2">
+	<button @click="calc2">Сложить</button>
+	<p> {{ res2 }}</p>
 </template>
 
 <style>
