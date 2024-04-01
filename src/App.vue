@@ -69,6 +69,8 @@ export default {
 			isDisabled: false,
 			messageInput: 'hello',
 			numberInput: 5,
+			num3: 2,
+			res: 0,
 		}
 	},
 
@@ -171,6 +173,10 @@ export default {
 
 		setColorText: function () {
 			this.styles.colorText = !this.styles.colorText
+		},
+
+		calc: function () {
+			this.res = this.num3 ** 2
 		}
 	}
 }
@@ -320,6 +326,10 @@ export default {
 	<p> {{ messageInput.toUpperCase() }}</p>
 	<input type="number" v-model="numberInput">
 	<p> {{ numberInput ** 2 }}</p>
+
+	<input type="number" v-model="num3">
+	<button @click="calc">Расчитать</button>
+	<p> {{ res }}</p>
 </template>
 
 <style>
