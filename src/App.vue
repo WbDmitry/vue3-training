@@ -125,8 +125,12 @@ export default {
 			this.visibleGroup = !this.visibleGroup
 		},
 
-		add: function () {
+		addArr: function () {
 			this.arr3.push('d');
+		},
+
+		deleteArr: function () {
+			this.arr3.shift();
 		}
 	}
 }
@@ -243,7 +247,8 @@ export default {
 <div v-for="items in items2">
 	<p v-if="items > 0"> {{ items }}</p>
 </div> -->
-	<button @click="add">add</button>
+	<button @click="addArr">Добавить</button>
+	<button @click="deleteArr">Удалить первый пункт</button>
 	<ul>
 		<li v-for="elem in arr3">
 			{{ elem }}
