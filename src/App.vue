@@ -67,6 +67,8 @@ export default {
 			},
 			isValid: true,
 			isDisabled: false,
+			messageInput: 'hello',
+			numberInput: 5,
 		}
 	},
 
@@ -312,6 +314,12 @@ export default {
 	<button @click="setColorText">Управление классом</button>
 	<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
 	<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
+
+	<input v-model="messageInput">
+	<p> {{ messageInput }}</p>
+	<p> {{ messageInput.toUpperCase() }}</p>
+	<input type="number" v-model="numberInput">
+	<p> {{ numberInput ** 2 }}</p>
 </template>
 
 <style>
