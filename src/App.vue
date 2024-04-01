@@ -64,7 +64,9 @@ export default {
 			],
 			styles: {
 				colorText: false,
-			}
+			},
+			isValid: true,
+			isDisabled: false,
 		}
 	},
 
@@ -309,6 +311,7 @@ export default {
 	<p :class="styles">Что такое Lorem Ipsum?</p>
 	<button @click="setColorText">Управление классом</button>
 	<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
+	<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
 </template>
 
 <style>
