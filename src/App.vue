@@ -21,6 +21,7 @@ export default {
 			age: 25,
 			visibleGroup: false,
 			items: [1, 2, 3],
+			items2: [1, -2, 3, -4, 5],
 			obj2: {
 				user1: '100$', user2: '200$', user3: '300$',
 			},
@@ -232,6 +233,10 @@ export default {
 	</table>
 
 	<p v-for="num in 30">{{ num }}</p>
+
+	<div v-for="items in items2">
+		<p v-if="items > 0"> {{ items }}</p>
+	</div>
 </template>
 
 <style>
