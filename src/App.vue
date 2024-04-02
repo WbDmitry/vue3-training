@@ -393,96 +393,98 @@ export default {
 				{{ items.name }}
 			</li>
 		</ul>
+
+
+		<p :class="styles">Что такое Lorem Ipsum?</p>
+		<button @click="setColorText">Управление классом</button>
+		<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
+		<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
+
+		<input v-model="messageInput">
+		<p> {{ messageInput }}</p>
+		<p> {{ messageInput.toUpperCase() }}</p>
+		<input type="number" v-model="numberInput">
+		<p> {{ numberInput ** 2 }}</p>
+
+		<input type="checkbox" v-model="isChecked">
+		<p v-if="isChecked">Чекбокс: Активен</p>
+
+		<input type="checkbox" v-model="arrCheckbox" value="Русский">Русский</input>
+		<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
+		<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
+		<ul>
+			<li v-for="element in arrCheckbox">{{ element }}</li>
+		</ul>
+
+		<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
+		<input name="radio" type="radio" v-model="choice3" value="en">Английский</input>
+		<input name="radio" type="radio" v-model="choice3" value="ch">Китайский</input>
+		<p v-if="choice3 == 'ru'">Cообщение на русском</p>
+		<p v-else-if="choice3 === 'en'">The message is in English</p>
+		<p v-else="choice3 === 'ch'">留言是中文的</p>
+
+		<select v-model="selected">
+			<option>value1</option>
+			<option>value2</option>
+			<option>value3</option>
+		</select>
+
+		<p>{{ selected }}</p>
+
+		<select v-model="selected" :disabled="isDisabled">
+			<option>value1</option>
+			<option>value2</option>
+			<option>value3</option>
+		</select>
+		<button @click="setDisabled">Блокировать селект</button>
+
+		<input type="text" @keypress.enter="clickEnter">
+		<p v-if="isClickEnter">Нажили Ентер</p>
+
+		<a href="" @click.ctrl.exact="clickLinkCtrl">Ссылка</a>
+		<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
+
+		<ul>
+			<li v-for="user in users" :key="user.id">
+				<template v-if="!user.isEdit">
+					{{ user.name }}
+					{{ user.surn }}
+					<button @click="editUser2(user)">Редактировать</button>
+					<button @click="deleteUser(user.id)">x</button>
+				</template>
+				<template v-else>
+					<input type="text" v-model="user.name">
+					<input type="text" v-model="user.surn">
+					<button @click="saveUser2(user)">Сохранить</button>
+				</template>
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="(items, index) in items3" :key="index">
+				{{ items }}
+				<button @click="deleteItems(index)">x</button>
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="user in users2" :key="user.id">
+				<template v-if="user.isEdit">
+					{{ user.name }}
+					{{ user.surn }}
+					<button @click="editUser(user)">
+						Редактировать
+					</button>
+				</template>
+				<template v-else>
+					<input type="text" v-model="user.name">
+					<input type="text" v-model="user.surn">
+					<button @click="saveUser(user)">Сохранить</button>
+				</template>
+			</li>
+		</ul>
 	</div>
 
-	<p :class="styles">Что такое Lorem Ipsum?</p>
-	<button @click="setColorText">Управление классом</button>
-	<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
-	<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
-
-	<input v-model="messageInput">
-	<p> {{ messageInput }}</p>
-	<p> {{ messageInput.toUpperCase() }}</p>
-	<input type="number" v-model="numberInput">
-	<p> {{ numberInput ** 2 }}</p>
-
-	<input type="checkbox" v-model="isChecked">
-	<p v-if="isChecked">Чекбокс: Активен</p>
-
-	<input type="checkbox" v-model="arrCheckbox" value="Русский">Русский</input>
-	<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
-	<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
-	<ul>
-		<li v-for="element in arrCheckbox">{{ element }}</li>
-	</ul>
-
-	<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
-	<input name="radio" type="radio" v-model="choice3" value="en">Английский</input>
-	<input name="radio" type="radio" v-model="choice3" value="ch">Китайский</input>
-	<p v-if="choice3 == 'ru'">Cообщение на русском</p>
-	<p v-else-if="choice3 === 'en'">The message is in English</p>
-	<p v-else="choice3 === 'ch'">留言是中文的</p>
-
-	<select v-model="selected">
-		<option>value1</option>
-		<option>value2</option>
-		<option>value3</option>
-	</select>
-
-	<p>{{ selected }}</p>
-
-	<select v-model="selected" :disabled="isDisabled">
-		<option>value1</option>
-		<option>value2</option>
-		<option>value3</option>
-	</select>
-	<button @click="setDisabled">Блокировать селект</button>
-
-	<input type="text" @keypress.enter="clickEnter">
-	<p v-if="isClickEnter">Нажили Ентер</p>
-
-	<a href="" @click.ctrl.exact="clickLinkCtrl">Ссылка</a>
-	<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
-
-	<ul>
-		<li v-for="user in users" :key="user.id">
-			<template v-if="!user.isEdit">
-				{{ user.name }}
-				{{ user.surn }}
-				<button @click="editUser2(user)">Редактировать</button>
-				<button @click="deleteUser(user.id)">x</button>
-			</template>
-			<template v-else>
-				<input type="text" v-model="user.name">
-				<input type="text" v-model="user.surn">
-				<button @click="saveUser2(user)">Сохранить</button>
-			</template>
-		</li>
-	</ul>
-
-	<ul>
-		<li v-for="(items, index) in items3" :key="index">
-			{{ items }}
-			<button @click="deleteItems(index)">x</button>
-		</li>
-	</ul>
-
-	<ul>
-		<li v-for="user in users2" :key="user.id">
-			<template v-if="user.isEdit">
-				{{ user.name }}
-				{{ user.surn }}
-				<button @click="editUser(user)">
-					Редактировать
-				</button>
-			</template>
-			<template v-else>
-				<input type="text" v-model="user.name">
-				<input type="text" v-model="user.surn">
-				<button @click="saveUser(user)">Сохранить</button>
-			</template>
-		</li>
-	</ul>
 </template>
 
 <style>
