@@ -1,16 +1,16 @@
 <script>
 export default {
-	props: ['i', 'o', 'f'],
+	props: ['arr'],
 	data() {
 		return {
-			name: this.i
+			name: ''
 		}
 	}
 }
 </script>
 
 <template>
-	<p>{{ name }}</p>
-	<p>{{ o }}</p>
-	<p>{{ f }}</p>
+	<ul>
+		<li v-for="item in arr">{{ item }}</li>
+	</ul>
 </template>
