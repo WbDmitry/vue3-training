@@ -70,6 +70,7 @@ export default {
 			messageInput: 'hello',
 			numberInput: 5,
 			isChecked: true,
+			arrCheckbox: [],
 		}
 	},
 
@@ -324,6 +325,15 @@ export default {
 
 	<input type="checkbox" v-model="isChecked">
 	<p v-if="isChecked">Чекбокс: Активен</p>
+
+	<input type="checkbox" v-model="arrCheckbox" value="Русский">Русский</input>
+	<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
+	<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
+	<ul>
+		<li v-for="element in arrCheckbox">{{ element }}</li>
+	</ul>
+
+
 </template>
 
 <style>
