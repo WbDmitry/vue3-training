@@ -72,6 +72,7 @@ export default {
 			isChecked: true,
 			arrCheckbox: [],
 			choice3: '',
+			selected: '',
 		}
 	},
 
@@ -340,6 +341,14 @@ export default {
 	<p v-if="choice3 == 'ru'">Cообщение на русском</p>
 	<p v-else-if="choice3 === 'en'">The message is in English</p>
 	<p v-else="choice3 === 'ch'">留言是中文的</p>
+
+	<select v-model="selected">
+		<option>value1</option>
+		<option>value2</option>
+		<option>value3</option>
+	</select>
+
+	<p>{{ selected }}</p>
 
 </template>
 
