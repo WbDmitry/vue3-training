@@ -132,7 +132,27 @@ export default {
 					surn: 'surn3',
 					isEdit: true,
 				},
-			]
+			],
+			usersProps: [
+				{
+					id: 1,
+					name: 'name1',
+					salary: 100,
+					age: 30,
+				},
+				{
+					id: 2,
+					name: 'name2',
+					salary: 200,
+					age: 40,
+				},
+				{
+					id: 3,
+					name: 'name3',
+					salary: 300,
+					age: 50,
+				},
+			],
 		}
 	},
 
@@ -296,7 +316,8 @@ export default {
 </script>
 
 <template>
-	<User :arr="['1', '2', '3', '4', '5', '6']" />
+	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age" />
+
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
