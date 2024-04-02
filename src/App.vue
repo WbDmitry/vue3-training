@@ -92,7 +92,8 @@ export default {
 					name: 'name3',
 					surn: 'surn3',
 				},
-			]
+			],
+			items3: ['a', 'b', 'c', 'd', 'e'],
 		}
 	},
 
@@ -213,6 +214,9 @@ export default {
 			this.users = this.users.filter(user => {
 				return user.id !== id
 			})
+    },
+		deleteItems: function (index) {
+			this.items3.splice(index, 1)
 		}
 	}
 }
@@ -405,6 +409,12 @@ export default {
 		<li v-for="user in users" :key="user.id">
 			{{ user.name }} {{ user.surn }}
 			<button @click="deleteUser(user.id)">x</button>
+		</li>
+	</ul>
+  <ul>
+		<li v-for="(items, index) in items3" :key="index">
+			{{ items }}
+			<button @click="deleteItems(index)">x</button>
 		</li>
 	</ul>
 </template>
