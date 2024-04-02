@@ -74,6 +74,7 @@ export default {
 			choice3: '',
 			selected: '',
 			isDisabled: false,
+			isClickEnter: false,
 		}
 	},
 
@@ -181,6 +182,10 @@ export default {
 		setDisabled: function () {
 			this.isDisabled = !this.isDisabled
 		},
+
+		clickEnter: function () {
+			this.isClickEnter = true
+		}
 	}
 }
 </script>
@@ -361,6 +366,9 @@ export default {
 		<option>value3</option>
 	</select>
 	<button @click="setDisabled">Блокировать селект</button>
+
+	<input type="text" @keypress.enter="clickEnter">
+	<p v-if="isClickEnter">Нажили Ентер</p>
 </template>
 
 <style>
