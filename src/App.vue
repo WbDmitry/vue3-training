@@ -75,6 +75,7 @@ export default {
 			selected: '',
 			isDisabled: false,
 			isClickEnter: false,
+			isClickLinkCtrl: false,
 		}
 	},
 
@@ -185,6 +186,10 @@ export default {
 
 		clickEnter: function () {
 			this.isClickEnter = true
+		},
+
+		clickLinkCtrl: function () {
+			this.isClickLinkCtrl = true
 		}
 	}
 }
@@ -369,6 +374,9 @@ export default {
 
 	<input type="text" @keypress.enter="clickEnter">
 	<p v-if="isClickEnter">Нажили Ентер</p>
+
+	<a href="" @click.ctrl.exact="clickLinkCtrl">Ссылка</a>
+	<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
 </template>
 
 <style>
