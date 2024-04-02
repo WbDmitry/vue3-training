@@ -1,6 +1,12 @@
 <script>
+import User from './components/User.vue'
+
 export default {
 	name: 'App',
+	components: {
+		User
+	},
+
 	data() {
 		return {
 			firstName: 'Dmitry',
@@ -262,6 +268,7 @@ export default {
 </script>
 
 <template>
+	<User />
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
