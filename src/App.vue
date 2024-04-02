@@ -253,8 +253,8 @@ export default {
 
 		sendText: function () {
 			this.fioArr = this.textFIO.split(' ');
-    }
-    
+		},
+
 		setDisabled: function () {
 			this.isDisabled = !this.isDisabled
 		},
@@ -429,28 +429,28 @@ export default {
 			</li>
 		</ul>
 
-	<input v-model="messageInput">
-	<p> {{ messageInput }}</p>
-	<p> {{ messageInput.toUpperCase() }}</p>
-	<input type="number" v-model="numberInput">
-	<p> {{ numberInput ** 2 }}</p>
+		<input v-model="messageInput">
+		<p> {{ messageInput }}</p>
+		<p> {{ messageInput.toUpperCase() }}</p>
+		<input type="number" v-model="numberInput">
+		<p> {{ numberInput ** 2 }}</p>
 
-	<input type="number" v-model="num3">
-	<button @click="calc">Расчитать</button>
-	<p> {{ res }}</p>
+		<input type="number" v-model="num3">
+		<button @click="calc">Расчитать</button>
+		<p> {{ res }}</p>
 
-	<input type="number" v-model="numInput1">
-	<input type="number" v-model="numInput2">
-	<button @click="calc2">Сложить</button>
-	<p> {{ res2 }}</p>
+		<input type="number" v-model="numInput1">
+		<input type="number" v-model="numInput2">
+		<button @click="calc2">Сложить</button>
+		<p> {{ res2 }}</p>
 
-	<input type="number" v-model="numInput3">
-	<input type="number" v-model="numInput4">
-	<button @click="change">Поменять местами</button>
+		<input type="number" v-model="numInput3">
+		<input type="number" v-model="numInput4">
+		<button @click="change">Поменять местами</button>
 
-	<input v-model="textFIO">
-	<button @click="sendText">Вывести</button>
-	<p v-for="element in fioArr">{{ element }}</p>
+		<input v-model="textFIO">
+		<button @click="sendText">Вывести</button>
+		<p v-for="element in fioArr">{{ element }}</p>
 
 		<p :class="styles">Что такое Lorem Ipsum?</p>
 		<button @click="setColorText">Управление классом</button>
