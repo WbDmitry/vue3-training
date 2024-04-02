@@ -310,13 +310,22 @@ export default {
 
 		saveUser2: function (user) {
 			user.isEdit = false
-		}
+		},
+
+		funProps1: function (text) {
+			alert(text);
+		},
+
+		funProps2: function (text1, text2) {
+			alert(`${text1} - ${text2}`)
+		},
 	}
 }
 </script>
 
 <template>
-	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age" />
+	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
+		@funProps1="funProps1" @funProps2="funProps2" />
 
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>

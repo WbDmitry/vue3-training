@@ -1,5 +1,6 @@
 <script>
 export default {
+	emits: ['funProps1', 'funProps2'],
 	props: {
 		name: String,
 		salary: Number,
@@ -8,6 +9,14 @@ export default {
 
 	data() {
 		return {
+		}
+	},
+	methods: {
+		funcProps11: function () {
+			this.$emit('funProps1', '3333')
+		},
+		funcProps22: function () {
+			this.$emit('funProps2', '25252352', '52364326')
 		}
 	}
 }
@@ -19,4 +28,6 @@ export default {
 		<li>Salary: {{ salary }}</li>
 		<li>Age: {{ age }}</li>
 	</ul>
+	<button @click="funcProps11">alert1</button>
+	<button @click="funcProps22">alert2</button>
 </template>
