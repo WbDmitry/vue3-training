@@ -312,12 +312,12 @@ export default {
 			user.isEdit = false
 		},
 
-		funProps1: function () {
-			alert('111');
+		funProps1: function (text) {
+			alert(text);
 		},
 
-		funProps2: function () {
-			alert('222')
+		funProps2: function (text1, text2) {
+			alert(`${text1} - ${text2}`)
 		},
 	}
 }

@@ -13,10 +13,10 @@ export default {
 	},
 	methods: {
 		funcProps11: function () {
-			this.$emit('funProps1')
+			this.$emit('funProps1', '3333')
 		},
 		funcProps22: function () {
-			this.$emit('funProps2')
+			this.$emit('funProps2', '25252352', '52364326')
 		}
 	}
 }
