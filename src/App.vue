@@ -73,6 +73,50 @@ export default {
 			arrCheckbox: [],
 			choice3: '',
 			selected: '',
+			isDisabled: false,
+			isClickEnter: false,
+			isClickLinkCtrl: false,
+			users: [
+				{
+					id: 1,
+					name: 'name1',
+					surn: 'surn1',
+					isEdit: false,
+				},
+				{
+					id: 2,
+					name: 'name2',
+					surn: 'surn2',
+					isEdit: false,
+				},
+				{
+					id: 3,
+					name: 'name3',
+					surn: 'surn3',
+					isEdit: false,
+				},
+			],
+			items3: ['a', 'b', 'c', 'd', 'e'],
+			users2: [
+				{
+					id: 1,
+					name: 'name1',
+					surn: 'surn1',
+					isEdit: true,
+				},
+				{
+					id: 2,
+					name: 'name2',
+					surn: 'surn2',
+					isEdit: true,
+				},
+				{
+					id: 3,
+					name: 'name3',
+					surn: 'surn3',
+					isEdit: true,
+				},
+			]
 		}
 	},
 
@@ -176,6 +220,43 @@ export default {
 		setColorText: function () {
 			this.styles.colorText = !this.styles.colorText
 		},
+
+		setDisabled: function () {
+			this.isDisabled = !this.isDisabled
+		},
+
+		clickEnter: function () {
+			this.isClickEnter = true
+		},
+
+		clickLinkCtrl: function () {
+			this.isClickLinkCtrl = true
+		},
+
+		deleteUser: function (id) {
+			this.users = this.users.filter(user => {
+				return user.id !== id
+			})
+		},
+		deleteItems: function (index) {
+			this.items3.splice(index, 1)
+		},
+
+		editUser: function (user) {
+			user.isEdit = false
+		},
+
+		saveUser: function (user) {
+			user.isEdit = true
+		},
+
+		editUser2: function (user) {
+			user.isEdit = true
+		},
+
+		saveUser2: function (user) {
+			user.isEdit = false
+		}
 	}
 }
 </script>
@@ -195,7 +276,7 @@ export default {
 		<p>Сумма чисел: {{ arr[0] + arr[1] + arr[2] }}</p>
 		<p>Ввывод содержимого объекта (способ 1): {{ obj.x + obj.y + obj.z }}</p>
 		<p>Ввывод содержимого объекта (способ 2): {{ obj['x'] + obj['y'] + obj['z'] }}</p>
-		<!-- {{ getCurrentDate() }} -->
+		<!-- {{ getCurrentDate() }}  -->
 		<button @click="getCurrentDate">Вывести дату по клику</button>
 		<button @mouseover="getCurrentDate">Вывести дату при наведении</button>
 		<button @click="getUserInfo">Вывести свойсва из data</button>
@@ -312,43 +393,97 @@ export default {
 				{{ items.name }}
 			</li>
 		</ul>
+
+
+		<p :class="styles">Что такое Lorem Ipsum?</p>
+		<button @click="setColorText">Управление классом</button>
+		<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
+		<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
+
+		<input v-model="messageInput">
+		<p> {{ messageInput }}</p>
+		<p> {{ messageInput.toUpperCase() }}</p>
+		<input type="number" v-model="numberInput">
+		<p> {{ numberInput ** 2 }}</p>
+
+		<input type="checkbox" v-model="isChecked">
+		<p v-if="isChecked">Чекбокс: Активен</p>
+
+		<input type="checkbox" v-model="arrCheckbox" value="Русский">Русский</input>
+		<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
+		<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
+		<ul>
+			<li v-for="element in arrCheckbox">{{ element }}</li>
+		</ul>
+
+		<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
+		<input name="radio" type="radio" v-model="choice3" value="en">Английский</input>
+		<input name="radio" type="radio" v-model="choice3" value="ch">Китайский</input>
+		<p v-if="choice3 == 'ru'">Cообщение на русском</p>
+		<p v-else-if="choice3 === 'en'">The message is in English</p>
+		<p v-else="choice3 === 'ch'">留言是中文的</p>
+
+		<select v-model="selected">
+			<option>value1</option>
+			<option>value2</option>
+			<option>value3</option>
+		</select>
+
+		<p>{{ selected }}</p>
+
+		<select v-model="selected" :disabled="isDisabled">
+			<option>value1</option>
+			<option>value2</option>
+			<option>value3</option>
+		</select>
+		<button @click="setDisabled">Блокировать селект</button>
+
+		<input type="text" @keypress.enter="clickEnter">
+		<p v-if="isClickEnter">Нажили Ентер</p>
+
+		<a href="" @click.ctrl.exact="clickLinkCtrl">Ссылка</a>
+		<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
+
+		<ul>
+			<li v-for="user in users" :key="user.id">
+				<template v-if="!user.isEdit">
+					{{ user.name }}
+					{{ user.surn }}
+					<button @click="editUser2(user)">Редактировать</button>
+					<button @click="deleteUser(user.id)">x</button>
+				</template>
+				<template v-else>
+					<input type="text" v-model="user.name">
+					<input type="text" v-model="user.surn">
+					<button @click="saveUser2(user)">Сохранить</button>
+				</template>
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="(items, index) in items3" :key="index">
+				{{ items }}
+				<button @click="deleteItems(index)">x</button>
+			</li>
+		</ul>
+
+		<ul>
+			<li v-for="user in users2" :key="user.id">
+				<template v-if="user.isEdit">
+					{{ user.name }}
+					{{ user.surn }}
+					<button @click="editUser(user)">
+						Редактировать
+					</button>
+				</template>
+				<template v-else>
+					<input type="text" v-model="user.name">
+					<input type="text" v-model="user.surn">
+					<button @click="saveUser(user)">Сохранить</button>
+				</template>
+			</li>
+		</ul>
 	</div>
-
-	<p :class="styles">Что такое Lorem Ipsum?</p>
-	<button @click="setColorText">Управление классом</button>
-	<p :class="{ active: true, valid: false }">Инлайн объект с КСС классами</p>
-	<p :class="{ active: isValid, valid: isDisabled }">Классы через data</p>
-
-	<input v-model="messageInput">
-	<p> {{ messageInput }}</p>
-	<p> {{ messageInput.toUpperCase() }}</p>
-	<input type="number" v-model="numberInput">
-	<p> {{ numberInput ** 2 }}</p>
-
-	<input type="checkbox" v-model="isChecked">
-	<p v-if="isChecked">Чекбокс: Активен</p>
-
-	<input type="checkbox" v-model="arrCheckbox" value="Русский">Русский</input>
-	<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
-	<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
-	<ul>
-		<li v-for="element in arrCheckbox">{{ element }}</li>
-	</ul>
-
-	<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
-	<input name="radio" type="radio" v-model="choice3" value="en">Английский</input>
-	<input name="radio" type="radio" v-model="choice3" value="ch">Китайский</input>
-	<p v-if="choice3 == 'ru'">Cообщение на русском</p>
-	<p v-else-if="choice3 === 'en'">The message is in English</p>
-	<p v-else="choice3 === 'ch'">留言是中文的</p>
-
-	<select v-model="selected">
-		<option>value1</option>
-		<option>value2</option>
-		<option>value3</option>
-	</select>
-
-	<p>{{ selected }}</p>
 
 </template>
 
