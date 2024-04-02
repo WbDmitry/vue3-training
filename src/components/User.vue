@@ -1,6 +1,9 @@
 <script>
 export default {
-	props: ['arr'],
+	props: {
+		arr: Array,
+	},
+
 	data() {
 		return {
 			name: ''
