@@ -132,7 +132,27 @@ export default {
 					surn: 'surn3',
 					isEdit: true,
 				},
-			]
+			],
+			usersProps: [
+				{
+					id: 1,
+					name: 'name1',
+					salary: 100,
+					age: 30,
+				},
+				{
+					id: 2,
+					name: 'name2',
+					salary: 200,
+					age: 40,
+				},
+				{
+					id: 3,
+					name: 'name3',
+					salary: 300,
+					age: 50,
+				},
+			],
 		}
 	},
 
@@ -290,13 +310,23 @@ export default {
 
 		saveUser2: function (user) {
 			user.isEdit = false
-		}
+		},
+
+		funProps1: function (text) {
+			alert(text);
+		},
+
+		funProps2: function (text1, text2) {
+			alert(`${text1} - ${text2}`)
+		},
 	}
 }
 </script>
 
 <template>
-	<User i="Имя" o="Отчество" f="Фамилия" />
+	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
+		@funProps1="funProps1" @funProps2="funProps2" />
+
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
@@ -361,49 +391,49 @@ export default {
 		<button @click="setAge(25)">25</button>
 		<button @click="setAge(30)">30</button>
 
-		<div v-for="items in arr">{{ items }}</div>
-		<div v-for="items in arr">{{ items ** 2 }}</div>
+		<div v-for=" items  in  arr ">{{ items }}</div>
+		<div v-for=" items  in  arr ">{{ items ** 2 }}</div>
 		<ul>
-			<li v-for="items in arr">{{ items }}</li>
+			<li v-for=" items  in  arr ">{{ items }}</li>
 		</ul>
 
 		<ul>
-			<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
+			<li v-for="( items, key ) in  arr2 "> {{ key + 1 }} - {{ items }}</li>
 		</ul>
 
 		<ul>
-			<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
+			<li v-for="( items, key, index ) in  obj2 ">{{ key }} - {{ items }} - {{ index + 1 }}</li>
 		</ul>
 
-		<div v-for="items in items">
+		<div v-for=" items  in  items ">
 			<p>{{ items }}</p>
 			<p class="divider"></p>
 		</div>
 
 		<ul>
-			<template v-for="items in items">
+			<template v-for=" items  in  items ">
 				<li>{{ items }}</li>
 				<li class="divider"></li>
 			</template>
 		</ul>
 
 		<ul>
-			<li v-for="item in hrefs">
+			<li v-for=" item  in  hrefs ">
 				<a :href="item.href">{{ item.text }}</a>
 			</li>
 		</ul>
 
 		<table>
-			<tr v-for="items in products">
+			<tr v-for=" items  in  products ">
 				<td>{{ items.name }}</td>
 				<td>{{ items.price }}</td>
 				<td>{{ items.quantity }}</td>
 			</tr>
 		</table>
 
-		<p v-for="num in 30">{{ num }}</p>
+		<p v-for=" num  in  30">{{ num }}</p>
 
-		<div v-for="items in items2">
+		<div v-for=" items  in  items2 ">
 			<p v-if="items > 0"> {{ items }}</p>
 		</div>
 		<button @click="addArr">Добавить</button>
@@ -413,17 +443,17 @@ export default {
 		<button @click="sortArr">Сортировать</button>
 		<button @click="reverseArr">В обратном порядке</button>
 		<ul>
-			<li v-for="elem in arr3">
+			<li v-for=" elem  in  arr3 ">
 				{{ elem }}
 			</li>
 		</ul>
 
-		<div v-for="items in items2">
+		<div v-for=" items  in  items2 ">
 			<p v-if="items > 0"> {{ items }}</p>
 		</div>
 
 		<ul>
-			<li v-for="items in products2" :key="items.id">
+			<li v-for=" items  in  products2 " :key="items.id">
 				{{ items.id }}
 				{{ items.name }}
 			</li>
@@ -450,6 +480,7 @@ export default {
 
 		<input v-model="textFIO">
 		<button @click="sendText">Вывести</button>
+		<p v-for=" element  in  fioArr ">{{ element }}</p>
 		<p v-for="element in fioArr">{{ element }}</p>
 
 		<p :class="styles">Что такое Lorem Ipsum?</p>
@@ -470,7 +501,7 @@ export default {
 		<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
 		<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
 		<ul>
-			<li v-for="element in arrCheckbox">{{ element }}</li>
+			<li v-for=" element  in  arrCheckbox ">{{ element }}</li>
 		</ul>
 
 		<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
@@ -502,7 +533,7 @@ export default {
 		<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
 
 		<ul>
-			<li v-for="user in users" :key="user.id">
+			<li v-for=" user  in  users " :key="user.id">
 				<template v-if="!user.isEdit">
 					{{ user.name }}
 					{{ user.surn }}
@@ -518,14 +549,14 @@ export default {
 		</ul>
 
 		<ul>
-			<li v-for="(items, index) in items3" :key="index">
+			<li v-for="( items, index ) in  items3 " :key="index">
 				{{ items }}
 				<button @click="deleteItems(index)">x</button>
 			</li>
 		</ul>
 
 		<ul>
-			<li v-for="user in users2" :key="user.id">
+			<li v-for=" user  in  users2 " :key="user.id">
 				<template v-if="user.isEdit">
 					{{ user.name }}
 					{{ user.surn }}

@@ -1,16 +1,33 @@
 <script>
 export default {
-	props: ['i', 'o', 'f'],
+	emits: ['funProps1', 'funProps2'],
+	props: {
+		name: String,
+		salary: Number,
+		age: Number,
+	},
+
 	data() {
 		return {
-			name: this.i
+		}
+	},
+	methods: {
+		funcProps11: function () {
+			this.$emit('funProps1', '3333')
+		},
+		funcProps22: function () {
+			this.$emit('funProps2', '25252352', '52364326')
 		}
 	}
 }
 </script>
 
 <template>
-	<p>{{ name }}</p>
-	<p>{{ o }}</p>
-	<p>{{ f }}</p>
+	<ul>
+		<li>Name: {{ name }}</li>
+		<li>Salary: {{ salary }}</li>
+		<li>Age: {{ age }}</li>
+	</ul>
+	<button @click="funcProps11">alert1</button>
+	<button @click="funcProps22">alert2</button>
 </template>
