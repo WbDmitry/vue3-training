@@ -73,6 +73,7 @@ export default {
 			arrCheckbox: [],
 			choice3: '',
 			selected: '',
+			isDisabled: false,
 		}
 	},
 
@@ -175,6 +176,10 @@ export default {
 
 		setColorText: function () {
 			this.styles.colorText = !this.styles.colorText
+		},
+
+		setDisabled: function () {
+			this.isDisabled = !this.isDisabled
 		},
 	}
 }
@@ -350,6 +355,12 @@ export default {
 
 	<p>{{ selected }}</p>
 
+	<select v-model="selected" :disabled="isDisabled">
+		<option>value1</option>
+		<option>value2</option>
+		<option>value3</option>
+	</select>
+	<button @click="setDisabled">Блокировать селект</button>
 </template>
 
 <style>
