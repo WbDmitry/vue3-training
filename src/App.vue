@@ -71,6 +71,7 @@ export default {
 			numberInput: 5,
 			isChecked: true,
 			arrCheckbox: [],
+			choice3: '',
 		}
 	},
 
@@ -333,6 +334,12 @@ export default {
 		<li v-for="element in arrCheckbox">{{ element }}</li>
 	</ul>
 
+	<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
+	<input name="radio" type="radio" v-model="choice3" value="en">Английский</input>
+	<input name="radio" type="radio" v-model="choice3" value="ch">Китайский</input>
+	<p v-if="choice3 == 'ru'">Cообщение на русском</p>
+	<p v-else-if="choice3 === 'en'">The message is in English</p>
+	<p v-else="choice3 === 'ch'">留言是中文的</p>
 
 </template>
 
