@@ -69,6 +69,7 @@ export default {
 			isDisabled: false,
 			messageInput: 'hello',
 			numberInput: 5,
+			isChecked: true,
 		}
 	},
 
@@ -171,7 +172,7 @@ export default {
 
 		setColorText: function () {
 			this.styles.colorText = !this.styles.colorText
-		}
+		},
 	}
 }
 </script>
@@ -320,6 +321,9 @@ export default {
 	<p> {{ messageInput.toUpperCase() }}</p>
 	<input type="number" v-model="numberInput">
 	<p> {{ numberInput ** 2 }}</p>
+
+	<input type="checkbox" v-model="isChecked">
+	<p v-if="isChecked">Чекбокс: Активен</p>
 </template>
 
 <style>
