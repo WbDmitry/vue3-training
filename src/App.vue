@@ -76,6 +76,7 @@ export default {
 			isDisabled: false,
 			isClickEnter: false,
 			isClickLinkCtrl: false,
+			items3: ['a', 'b', 'c', 'd', 'e'],
 		}
 	},
 
@@ -190,6 +191,10 @@ export default {
 
 		clickLinkCtrl: function () {
 			this.isClickLinkCtrl = true
+		},
+
+		deleteItems: function (index) {
+			this.items3.splice(index, 1)
 		}
 	}
 }
@@ -377,6 +382,13 @@ export default {
 
 	<a href="" @click.ctrl.exact="clickLinkCtrl">Ссылка</a>
 	<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
+
+	<ul>
+		<li v-for="(items, index) in items3" :key="index">
+			{{ items }}
+			<button @click="deleteItems(index)">x</button>
+		</li>
+	</ul>
 </template>
 
 <style>
