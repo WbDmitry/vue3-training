@@ -451,6 +451,7 @@ export default {
 		<input v-model="textFIO">
 		<button @click="sendText">Вывести</button>
 		<p v-for=" element  in  fioArr ">{{ element }}</p>
+		<p v-for="element in fioArr">{{ element }}</p>
 
 		<p :class="styles">Что такое Lorem Ipsum?</p>
 		<button @click="setColorText">Управление классом</button>
