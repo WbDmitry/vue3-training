@@ -1,6 +1,12 @@
 <script>
+import User from './components/User.vue'
+
 export default {
 	name: 'App',
+	components: {
+		User
+	},
+
 	data() {
 		return {
 			firstName: 'Dmitry',
@@ -69,6 +75,16 @@ export default {
 			isDisabled: false,
 			messageInput: 'hello',
 			numberInput: 5,
+			num3: 2,
+			res: 0,
+			numInput1: 2,
+			numInput2: 3,
+			res2: 0,
+			numInput3: 2,
+			numInput4: 3,
+			res3: 0,
+			fioArr: [],
+			textFIO: '',
 			isChecked: true,
 			arrCheckbox: [],
 			choice3: '',
@@ -221,6 +237,24 @@ export default {
 			this.styles.colorText = !this.styles.colorText
 		},
 
+		calc: function () {
+			this.res = this.num3 ** 2
+		},
+
+		calc2: function () {
+			this.res2 = this.numInput1 + this.numInput2
+		},
+
+		change: function () {
+			this.res3 = this.numInput3
+			this.numInput3 = this.numInput4
+			this.numInput4 = this.res3
+		},
+
+		sendText: function () {
+			this.fioArr = this.textFIO.split(' ');
+		},
+
 		setDisabled: function () {
 			this.isDisabled = !this.isDisabled
 		},
@@ -262,6 +296,7 @@ export default {
 </script>
 
 <template>
+	<User i="Имя" o="Отчество" f="Фамилия" />
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
@@ -394,6 +429,28 @@ export default {
 			</li>
 		</ul>
 
+		<input v-model="messageInput">
+		<p> {{ messageInput }}</p>
+		<p> {{ messageInput.toUpperCase() }}</p>
+		<input type="number" v-model="numberInput">
+		<p> {{ numberInput ** 2 }}</p>
+
+		<input type="number" v-model="num3">
+		<button @click="calc">Расчитать</button>
+		<p> {{ res }}</p>
+
+		<input type="number" v-model="numInput1">
+		<input type="number" v-model="numInput2">
+		<button @click="calc2">Сложить</button>
+		<p> {{ res2 }}</p>
+
+		<input type="number" v-model="numInput3">
+		<input type="number" v-model="numInput4">
+		<button @click="change">Поменять местами</button>
+
+		<input v-model="textFIO">
+		<button @click="sendText">Вывести</button>
+		<p v-for="element in fioArr">{{ element }}</p>
 
 		<p :class="styles">Что такое Lorem Ipsum?</p>
 		<button @click="setColorText">Управление классом</button>
@@ -484,7 +541,6 @@ export default {
 			</li>
 		</ul>
 	</div>
-
 </template>
 
 <style>
