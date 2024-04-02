@@ -268,7 +268,7 @@ export default {
 </script>
 
 <template>
-	<User />
+	<User i="Имя" o="Отчество" f="Фамилия" />
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
