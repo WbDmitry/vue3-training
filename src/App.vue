@@ -75,6 +75,16 @@ export default {
 			isDisabled: false,
 			messageInput: 'hello',
 			numberInput: 5,
+			num3: 2,
+			res: 0,
+			numInput1: 2,
+			numInput2: 3,
+			res2: 0,
+			numInput3: 2,
+			numInput4: 3,
+			res3: 0,
+			fioArr: [],
+			textFIO: '',
 			isChecked: true,
 			arrCheckbox: [],
 			choice3: '',
@@ -227,6 +237,24 @@ export default {
 			this.styles.colorText = !this.styles.colorText
 		},
 
+		calc: function () {
+			this.res = this.num3 ** 2
+		},
+
+		calc2: function () {
+			this.res2 = this.numInput1 + this.numInput2
+		},
+
+		change: function () {
+			this.res3 = this.numInput3
+			this.numInput3 = this.numInput4
+			this.numInput4 = this.res3
+		},
+
+		sendText: function () {
+			this.fioArr = this.textFIO.split(' ');
+		},
+
 		setDisabled: function () {
 			this.isDisabled = !this.isDisabled
 		},
@@ -268,7 +296,7 @@ export default {
 </script>
 
 <template>
-	<User i="Имя" o="Отчество" f="Фамилия" />
+	<User :arr="['1', '2', '3', '4', '5', '6']" />
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
 	<div v-show="visibleGroup">
@@ -333,49 +361,49 @@ export default {
 		<button @click="setAge(25)">25</button>
 		<button @click="setAge(30)">30</button>
 
-		<div v-for="items in arr">{{ items }}</div>
-		<div v-for="items in arr">{{ items ** 2 }}</div>
+		<div v-for=" items  in  arr ">{{ items }}</div>
+		<div v-for=" items  in  arr ">{{ items ** 2 }}</div>
 		<ul>
-			<li v-for="items in arr">{{ items }}</li>
+			<li v-for=" items  in  arr ">{{ items }}</li>
 		</ul>
 
 		<ul>
-			<li v-for="(items, key) in arr2"> {{ key + 1 }} - {{ items }}</li>
+			<li v-for="( items, key ) in  arr2 "> {{ key + 1 }} - {{ items }}</li>
 		</ul>
 
 		<ul>
-			<li v-for="(items, key, index) in obj2">{{ key }} - {{ items }} - {{ index + 1 }}</li>
+			<li v-for="( items, key, index ) in  obj2 ">{{ key }} - {{ items }} - {{ index + 1 }}</li>
 		</ul>
 
-		<div v-for="items in items">
+		<div v-for=" items  in  items ">
 			<p>{{ items }}</p>
 			<p class="divider"></p>
 		</div>
 
 		<ul>
-			<template v-for="items in items">
+			<template v-for=" items  in  items ">
 				<li>{{ items }}</li>
 				<li class="divider"></li>
 			</template>
 		</ul>
 
 		<ul>
-			<li v-for="item in hrefs">
+			<li v-for=" item  in  hrefs ">
 				<a :href="item.href">{{ item.text }}</a>
 			</li>
 		</ul>
 
 		<table>
-			<tr v-for="items in products">
+			<tr v-for=" items  in  products ">
 				<td>{{ items.name }}</td>
 				<td>{{ items.price }}</td>
 				<td>{{ items.quantity }}</td>
 			</tr>
 		</table>
 
-		<p v-for="num in 30">{{ num }}</p>
+		<p v-for=" num  in  30">{{ num }}</p>
 
-		<div v-for="items in items2">
+		<div v-for=" items  in  items2 ">
 			<p v-if="items > 0"> {{ items }}</p>
 		</div>
 		<button @click="addArr">Добавить</button>
@@ -385,22 +413,44 @@ export default {
 		<button @click="sortArr">Сортировать</button>
 		<button @click="reverseArr">В обратном порядке</button>
 		<ul>
-			<li v-for="elem in arr3">
+			<li v-for=" elem  in  arr3 ">
 				{{ elem }}
 			</li>
 		</ul>
 
-		<div v-for="items in items2">
+		<div v-for=" items  in  items2 ">
 			<p v-if="items > 0"> {{ items }}</p>
 		</div>
 
 		<ul>
-			<li v-for="items in products2" :key="items.id">
+			<li v-for=" items  in  products2 " :key="items.id">
 				{{ items.id }}
 				{{ items.name }}
 			</li>
 		</ul>
 
+		<input v-model="messageInput">
+		<p> {{ messageInput }}</p>
+		<p> {{ messageInput.toUpperCase() }}</p>
+		<input type="number" v-model="numberInput">
+		<p> {{ numberInput ** 2 }}</p>
+
+		<input type="number" v-model="num3">
+		<button @click="calc">Расчитать</button>
+		<p> {{ res }}</p>
+
+		<input type="number" v-model="numInput1">
+		<input type="number" v-model="numInput2">
+		<button @click="calc2">Сложить</button>
+		<p> {{ res2 }}</p>
+
+		<input type="number" v-model="numInput3">
+		<input type="number" v-model="numInput4">
+		<button @click="change">Поменять местами</button>
+
+		<input v-model="textFIO">
+		<button @click="sendText">Вывести</button>
+		<p v-for=" element  in  fioArr ">{{ element }}</p>
 
 		<p :class="styles">Что такое Lorem Ipsum?</p>
 		<button @click="setColorText">Управление классом</button>
@@ -420,7 +470,7 @@ export default {
 		<input type="checkbox" v-model="arrCheckbox" value="Английский">Английский</input>
 		<input type="checkbox" v-model="arrCheckbox" value="Китайский">Китайский</input>
 		<ul>
-			<li v-for="element in arrCheckbox">{{ element }}</li>
+			<li v-for=" element  in  arrCheckbox ">{{ element }}</li>
 		</ul>
 
 		<input name="radio" type="radio" v-model="choice3" value="ru">Русский</input>
@@ -452,7 +502,7 @@ export default {
 		<p v-if="isClickLinkCtrl">Нажили Ctrl+Click на ссылку</p>
 
 		<ul>
-			<li v-for="user in users" :key="user.id">
+			<li v-for=" user  in  users " :key="user.id">
 				<template v-if="!user.isEdit">
 					{{ user.name }}
 					{{ user.surn }}
@@ -468,14 +518,14 @@ export default {
 		</ul>
 
 		<ul>
-			<li v-for="(items, index) in items3" :key="index">
+			<li v-for="( items, index ) in  items3 " :key="index">
 				{{ items }}
 				<button @click="deleteItems(index)">x</button>
 			</li>
 		</ul>
 
 		<ul>
-			<li v-for="user in users2" :key="user.id">
+			<li v-for=" user  in  users2 " :key="user.id">
 				<template v-if="user.isEdit">
 					{{ user.name }}
 					{{ user.surn }}
@@ -491,7 +541,6 @@ export default {
 			</li>
 		</ul>
 	</div>
-
 </template>
 
 <style>
