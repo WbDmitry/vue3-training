@@ -163,6 +163,17 @@ export default {
 	},
 
 	methods: {
+		changeUser: function (id, name, salary, age) {
+			this.usersProps = this.usersProps.map((user) => {
+				if (user.id === id) {
+					user.name = name
+					user.salary = salary
+					user.age = age
+				}
+				return user
+			})
+		},
+
 		getCurrentDate: function () {
 			let currentDate = new Date();
 			alert(currentDate)
@@ -324,8 +335,8 @@ export default {
 </script>
 
 <template>
-	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
-		@funProps1="funProps1" @funProps2="funProps2" />
+	<User v-for="user in usersProps" :id="user.id" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
+		@funProps1="funProps1" @funProps2="funProps2" @changeUser="changeUser" />
 
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
