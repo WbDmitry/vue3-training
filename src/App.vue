@@ -1,10 +1,12 @@
 <script>
 import User from './components/User.vue'
+import UserForm from './components/UserForm.vue'
 
 export default {
 	name: 'App',
 	components: {
-		User
+		User,
+		UserForm
 	},
 
 	data() {
@@ -163,6 +165,34 @@ export default {
 	},
 
 	methods: {
+		deleteUser2: function (id) {
+			this.usersProps = this.usersProps.filter(user => {
+				return user.id != id
+			})
+		},
+
+		addUser: function (name, salary, age) {
+			let id = this.usersProps.length + 1
+
+			this.usersProps.push({
+				id,
+				name,
+				salary,
+				age,
+			})
+		},
+
+		changeUser: function (id, name, salary, age) {
+			this.usersProps = this.usersProps.map((user) => {
+				if (user.id === id) {
+					user.name = name
+					user.salary = salary
+					user.age = age
+				}
+				return user
+			})
+		},
+
 		getCurrentDate: function () {
 			let currentDate = new Date();
 			alert(currentDate)
@@ -324,8 +354,9 @@ export default {
 </script>
 
 <template>
-	<User v-for="user in usersProps" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
-		@funProps1="funProps1" @funProps2="funProps2" />
+	<UserForm @addUser="addUser" />
+	<User v-for="user in usersProps" :id="user.id" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
+		@funProps1="funProps1" @funProps2="funProps2" @changeUser="changeUser" @deleteUser2="deleteUser2" />
 
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
