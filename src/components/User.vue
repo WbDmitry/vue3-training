@@ -3,7 +3,8 @@ export default {
 	emits: [
 		'funProps1',
 		'funProps2',
-		'changeUser'
+		'changeUser',
+		'deleteUser2'
 	],
 	props: {
 		id: Number,
@@ -35,6 +36,9 @@ export default {
 
 		editUser: function () {
 			this.isEdit = true
+		},
+		deleteUser2: function () {
+			this.$emit('deleteUser2', this.id)
 		}
 	}
 }
@@ -48,6 +52,7 @@ export default {
 			<li>Age: {{ age }}</li>
 		</ul>
 		<button @click="editUser">Редактировать</button>
+		<button @click="deleteUser2">X</button>
 	</template>
 	<template v-else>
 		<input type="text" v-model="newName">

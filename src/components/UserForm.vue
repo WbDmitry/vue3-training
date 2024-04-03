@@ -27,8 +27,8 @@ export default {
 </script>
 
 <template>
-	<input type="text" v-model="newName">
-	<input type="number" v-model="newSalary">
-	<input type="number" v-model="newAge">
+	<input type="text" placeholder="Name" v-model="newName">
+	<input type="number" placeholder="Salary" v-model="newSalary">
+	<input type="number" placeholder="Age" v-model="newAge">
 	<button @click="addUser">Создать</button>
 </template>

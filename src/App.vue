@@ -165,6 +165,11 @@ export default {
 	},
 
 	methods: {
+		deleteUser2: function (id) {
+			this.usersProps = this.usersProps.filter(user => {
+				return user.id != id
+			})
+		},
 
 		addUser: function (name, salary, age) {
 			let id = this.usersProps.length + 1
@@ -351,7 +356,7 @@ export default {
 <template>
 	<UserForm @addUser="addUser" />
 	<User v-for="user in usersProps" :id="user.id" :key="user.id" :name="user.name" :salary="user.salary" :age="user.age"
-		@funProps1="funProps1" @funProps2="funProps2" @changeUser="changeUser" />
+		@funProps1="funProps1" @funProps2="funProps2" @changeUser="changeUser" @deleteUser2="deleteUser2" />
 
 	<p>VisibleGroup: {{ visibleGroup }}</p>
 	<button @click="setVisibleGroup()">{{ visibleGroup ? 'Скрыть' : 'Показать' }}</button>
